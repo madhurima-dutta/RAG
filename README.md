@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # PDF-ChatBot
 
 ## Overview
@@ -103,3 +104,6 @@ This project is licensed under the MIT License.
 =======
 # RAG
 >>>>>>> 84547b487471857f5ed40560bc3757ce0da44775
+=======
+# RAG
+>>>>>>> 89b666d6127a8d5a9d1e80c2bd5fca611ac21998
