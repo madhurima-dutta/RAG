@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 2cm;
+    font-size: 14px;
+    color: #333;
+  }
+
+  footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 11px;
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid #ccc;
+    padding-top: 2mm;
+  }
+
+  .page-break { page-break-after: always; }
+
+  h1, h2, h3 {
+    color: #003366;
+    font-weight: bold;
+  }
+  h1 {
+    font-size: 28px;
+    text-align: center;
+    margin-top: 5cm;
+    margin-bottom: 0.5cm;
+  }
+  h2 {
+    font-size: 20px;
+    margin-top: 1cm;
+    border-bottom: 1px solid #003366;
+    padding-bottom: 2mm;
+  }
+  h3 {
+    font-size: 16px;
+    margin-top: 0.8cm;
+  }
+
+  .institution {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 2cm;
+  }
+
+  .details {
+    margin-top: 2cm;
+  }
+  .details-title {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #003366;
+    padding-bottom: 2mm;
+    margin-bottom: 0.7cm;
+  }
+  .details-content {
+    display: flex;
+    justify-content: space-between;
+  }
+  .details-left {
+    line-height: 2;
+    font-size: 15px;
+  }
+  .details-right {
+    background: #f0f0f0;
+    padding: 0.7cm;
+    font-size: 16px;
+    text-align: right;
+    border-radius: 5px;
+    min-width: 4cm;
+  }
+
+  .bar-container {
+    width: 100%;
+    background-color: #ddd;
+    height: 24px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 0.5cm;
+  }
+  .bar {
+    height: 24px;
+    background-color: #4CAF50;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 0.5cm;
+    font-size: 14px;
+  }
+  table th, table td {
+    border: 1px solid #aaa;
+    padding: 8px;
+    text-align: left;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 0.5cm 0;
+    border: 1px solid #ccc;
+  }
+  .qa {
+    font-size: 14px;
+    margin-top: 0.5cm;
+    padding: 8px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+
+<!-- <footer>
+  <div>Made by Saptarshi Dey</div>
+  <div>Page {{ page_number }} of {{ total_pages }}</div>
+</footer> -->
+
+<!-- PAGE 1 -->
+<h1>{{ file_name }}</h1>
+<div class="institution">Techno India University, West Bengal</div>
+
+<div class="details">
+  <div class="details-title">Document Details</div>
+  <div class="details-content">
+    <div class="details-left">
+      <p><strong>Submission ID:</strong> {{ submission_id }}</p>
+      <p><strong>Submission Date:</strong> {{ submission_date }}</p>
+      <p><strong>Download Date:</strong> {{ download_date }}</p>
+      <p><strong>File Name:</strong> {{ file_name }}</p>
+      <p><strong>File Size:</strong> {{ file_size }}</p>
+    </div>
+    <div class="details-right">
+      <p><strong>{{ page_count }}</strong> Pages</p>
+      <p><strong>{{ word_count }}</strong> Words</p>
+      <p><strong>{{ char_count }}</strong> Characters</p>
+    </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- PAGE 2 -->
+<h2>Analytics Overview</h2>
+
+<h3>Context Similarity Score</h3>
+<p style="font-size: 16px;"><strong>{{ context_similarity }}</strong></p>
+
+<h3>Context Coverage</h3>
+<div class="bar-container">
+  <div class="bar" style="width: {{ context_similarity }};"></div>
+</div>
+
+<h3>Citation Detail</h3>
+<p>Source File: {{ citation_file }}</p>
+<p>Page: {{ citation_page }}</p>
+<p>Paragraph: {{ citation_paragraph }}</p>
+
+<h3>Word Cloud</h3>
+<img src="file:///C:/Users/Saptarshi Dey/Downloads/RAG/PDF-ChatBot/project-root/wordcloud.jpg" alt="Word Cloud">
+
+<h3>Entity Extraction</h3>
+<table>
+  <tr><th>Type</th><th>Value</th></tr>
+  {% for entity in entities %}
+  <tr>
+    <td>{{ entity.type }}</td>
+    <td>{{ entity.value }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<h3>Sentiment & Tone</h3>
+<p><strong>Sentiment:</strong> {{ sentiment }}</p>
+<p><strong>Tone:</strong> {{ tone }}</p>
+
+<div class="page-break"></div>
+
+<!-- PAGE 3+ -->
+<h2>PDF Summary</h2>
+<p>{{ summary }}</p>
+
+<h2>Q&A Section</h2>
+{% for qa in qa_pairs %}
+  <div class="qa">
+    <p><strong>Q:</strong> {{ qa.q }}</p>
+    <p><strong>A:</strong> {{ qa.a }}</p>
+  </div>
+{% endfor %}
+
+</body>
+</html>
