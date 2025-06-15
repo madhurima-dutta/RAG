@@ -92,7 +92,7 @@ The chatbot uses state-of-the-art machine learning models like Gemini and FAISS 
 
 ## Contributor
 
-This repository is maintained by [Saptarshi Dey](https://github.com/Saptarshi2120).
+A heartfelt thanks to [Saptarshi Dey](https://github.com/Saptarshi2120) for his valuable help and continuous support throughout the development of this project. Your help has been truly invaluable!
 
 ## Contributing
 
